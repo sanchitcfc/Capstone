@@ -9,7 +9,6 @@ google-auth
 google-api-python-client
 requests
 SMOTE
-LabelEncoder
 train_test_split
 classification_report
 confusion_matrix
