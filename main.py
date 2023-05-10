@@ -34,7 +34,6 @@ def dbmain():
 
     df_s = pd.concat([df_BENIGN, df_DoS, df_PortScan, df_BruteForce, df_minor])
 
-    df_s = df_s.reset_index(drop=True)
 
 
 
