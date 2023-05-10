@@ -11,17 +11,41 @@ from sklearn.ensemble import RandomForestClassifier,ExtraTreesClassifier
 from sklearn.tree import DecisionTreeClassifier
 from imblearn.over_sampling import SMOTE
 import time
-import gdown
+import requests
 
 
 def db1():
     file_id = '1kttchmkJ54VxcpyDTpc65jGCz8VNl7Bb'  # Replace with your file ID
-    url = f'https://drive.google.com/uc?id={file_id}'
-    output = 'data.csv'  # Path and name of the output file
+    confirm_url = f"https://drive.google.com/uc?id={file_id}&export=download"
 
-    gdown.download(url, output, quiet=False)
-    st.write("Read")
-    df = pd.read_csv('data.csv')
+# Path and name of the output file
+    output = 'data.csv'
+
+    session = requests.Session()
+    response = session.get(confirm_url, stream=True)
+    token = None
+
+    if 'confirm' in response.content.decode():
+        token_start = response.content.decode().find('confirm=')
+        token_end = response.content.decode().find('&', token_start)
+        if token_start != -1 and token_end != -1:
+            token = response.content.decode()[token_start + 8:token_end]
+
+# Download the file with confirmation token
+    if token:
+        download_url = f"https://drive.google.com/uc?id={file_id}&export=download&confirm={token}"
+        response = session.get(download_url, stream=True)
+
+    # Save the file
+        with open(output, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+
+    # Read the CSV file into a Pandas DataFrame
+        df = pd.read_csv(output)
+    else:
+        print("Unable to obtain confirmation token.")
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
     df['Timestamp'] = df['Timestamp'].apply(lambda x: int(time.mktime(x.timetuple())))
     df['Timestamp'] = df['Timestamp'].astype(float)
