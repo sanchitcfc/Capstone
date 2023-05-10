@@ -18,3 +18,4 @@ RandomForestClassifier
 ExtraTreesClassifier
 DecisionTreeClassifier
 time
+matplotlib.pyplot
