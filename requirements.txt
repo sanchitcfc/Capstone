@@ -10,8 +10,5 @@ google-api-python-client
 requests
 SMOTE
 confusion_matrix
-RandomForestClassifier
-ExtraTreesClassifier
-DecisionTreeClassifier
 time
 matplotlib.pyplot
