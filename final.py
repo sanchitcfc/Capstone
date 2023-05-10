@@ -21,7 +21,7 @@ def db1():
 
     gdown.download(url, output, quiet=False)
     st.write("Read")
-    df = pd.read_csv("Friday.csv")
+    df = pd.read_csv('data.csv')
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
     df['Timestamp'] = df['Timestamp'].apply(lambda x: int(time.mktime(x.timetuple())))
     df['Timestamp'] = df['Timestamp'].astype(float)
