@@ -9,4 +9,3 @@ google-auth
 google-api-python-client
 requests
 SMOTE
-confusion_matrix
