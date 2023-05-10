@@ -14,8 +14,7 @@ from imblearn.over_sampling import SMOTE
 from viz1 import viz
 from final import db1
 from main import dbmain
-import gdown
-
+import requests
 
     
 
