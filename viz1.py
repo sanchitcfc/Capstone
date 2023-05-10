@@ -4,7 +4,14 @@ import streamlit as st
 
 
 def viz():
-    dataset = pd.read_csv('Friday.csv')
+    file_id = '1kttchmkJ54VxcpyDTpc65jGCz8VNl7Bb'  # Replace with your file ID
+    url = f'https://drive.google.com/uc?id={file_id}'
+    output = 'data.csv'  # Path and name of the output file
+
+    gdown.download(url, output, quiet=False)
+    
+    dataset = pd.read_csv('data.csv')
+    
 
     columns_to_visualize = [
         'Dst Port', 'Protocol', 'Flow Duration', 'Tot Fwd Pkts', 'Tot Bwd Pkts',
