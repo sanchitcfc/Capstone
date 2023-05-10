@@ -10,8 +10,6 @@ google-api-python-client
 requests
 SMOTE
 confusion_matrix
-accuracy_score
-precision_recall_fscore_support
 f1_score
 RandomForestClassifier
 ExtraTreesClassifier
