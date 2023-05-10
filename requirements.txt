@@ -11,7 +11,12 @@ requests
 SMOTE
 LabelEncoder
 train_test_split
+classification_report
+confusion_matrix
+accuracy_score
+precision_recall_fscore_support
 f1_score
-RandomForestClassifier,ExtraTreesClassifier
+RandomForestClassifier
+ExtraTreesClassifier
 DecisionTreeClassifier
 time
