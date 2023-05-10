@@ -8,3 +8,5 @@ imblearn
 google-auth
 google-api-python-client
 requests
+SMOTE
+LabelEncoder
